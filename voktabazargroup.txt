@@ -1,0 +1,12 @@
+User: aalabcji_voktabazar
+pass : voktabazar
+Database: aalabcji_voktabazar
+
+
+
+Route::get('command', function () {
+    \Artisan::call('cache:clear');
+    \Artisan::call('config:clear');
+    \Artisan::call('route:clear');
+    dd("All clear!");
+});
