@@ -16,7 +16,7 @@ class ChatController extends Controller
     public function allChats($id)
     {
         if(count(Chat::where('sender_id',Auth::user()->id)->where('receiver_id',$id)->get()) != 0 || count(Chat::where('sender_id',$id)->where('receiver_id',Auth::user()->id)->get()) != 0){            
-            if(Auth::user()->role === 1){
+            if(Auth::user()->role == 1){
                 return response()->json(Chat::where('sender_id',Auth::user()->id)
                                             ->where('receiver_id',$id)
                                             ->orWhere('sender_id',$id)

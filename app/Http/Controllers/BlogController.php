@@ -23,7 +23,7 @@ class BlogController extends Controller
     public function saveBlog(Request $request)
     {
         $imgName = time() . '.' . $request->image->extension();
-        $request->image->storeAs('blogs',$imgName,'public');
+        $request->image->move('blogs',$imgName);
 
         $blog = new Blog();
         $blog->title = $request->title;

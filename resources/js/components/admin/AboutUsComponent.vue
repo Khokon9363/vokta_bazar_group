@@ -48,7 +48,7 @@ export default {
                 about : this.about
             })
             .then(response =>{
-                if (this.updateMode === false){
+                if (this.updateMode == false){
                     alert('About saved successfully')
                     this.getAbout()
                 }else {

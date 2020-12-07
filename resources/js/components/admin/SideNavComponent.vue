@@ -46,7 +46,7 @@ name: "SideNavComponent",
     },
     created() {
         if (document.getElementById('roleCheck')){
-            if (document.getElementById('roleCheck').value === '1'){
+            if (document.getElementById('roleCheck').value == '1'){
                 this.checkRole = 'Admin'
             }
         }

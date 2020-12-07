@@ -7,7 +7,7 @@
 
                         <div v-for="blog in blogsPages[currentPage -1]" :key="blog.id" class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
                             <div class="card" style="border-radius: 21px;width: 20rem;margin-left: 5px">
-                                <img :src="'/storage/blogs/'+blog.image" class="card-img-top" alt="...">
+                                <img :src="'/blogs/'+blog.image" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ blog.title }}</h5>
                                     <p class="card-text">{{ blog.short_desc }}</p>

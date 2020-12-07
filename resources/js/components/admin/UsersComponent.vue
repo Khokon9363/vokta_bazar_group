@@ -23,10 +23,10 @@
                                     <td>{{ user.name }}</td>
                                     <td>{{ user.email }}</td>
                                     <td>{{ user.key_code }}</td>
-                                    <td v-if="user.status === 1"><span style="color:green;">Active</span></td>
+                                    <td v-if="user.status == 1"><span style="color:green;">Active</span></td>
                                     <td v-else><span style="color:red;">Deactive</span></td>
                                     <td>
-                                        <button v-if="user.status === 0" class="btn btn-success btn-sm" @click="activeUser(user.id)">Active</button>
+                                        <button v-if="user.status == 0" class="btn btn-success btn-sm" @click="activeUser(user.id)">Active</button>
                                         <button v-else class="btn btn-info btn-sm text-white" @click="deactiveUser(user.id)">Deactive</button>
                                         <button class="btn btn-danger btn-sm" @click="delUser(user.id)">Delete</button>
                                     </td>

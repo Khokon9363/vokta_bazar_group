@@ -1,23 +1,23 @@
 <template>
-    <div class="container">
+    <div class="container" @dblclick="userSelected(1)">
         <div class="row">
             <div class="col-sm-12 m-auto">
                 <div class="card">
-                    <div class="card-header" v-if="authUserId === 1">Live chat with - {{selectedName}}</div>
+                    <div class="card-header" v-if="authUserId == 1">Live chat with - {{selectedName}}</div>
                     <div class="card-header" v-else>Live chat with - ভোক্তা বাজার গ্রুপ</div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-4" v-show="authUserId === 1">
+                            <div class="col-sm-4" v-show="authUserId == 1">
                                 <div class="card card-borderless" style="max-height:450px;overflow:auto;">
                                     <ul>
-                                        <li v-for="user in users" :key="user.id" @mouseenter="userSelected(user.id,user.name)" @click="userSelected(user.id,user.name)">{{user.name}}</li>
+                                        <li v-for="user in users" :key="user.id" @mousemove="userSelected(user.id,user.name)" @click="userSelected(user.id,user.name)">{{user.name}}</li>
                                     </ul>
                                 </div>
                             </div>
                             <div v-bind:class="{ 'col-sm-8': isAdmin,'col-sm-10 m-auto': isUser }">
                                 <div class="card" style="padding:10px;max-height:450px;overflow-x:hidden;">
                                     <div v-for="chat in chats" :key="chat.id">
-                                    <div v-if="chat.sender_id === authUserId" class="col-sm-6 offset-sm-8" style="color:blue;">{{chat.chat}} <br><small class="time" style="color:black;">({{chat.created_at}})</small></div>
+                                    <div v-if="chat.sender_id == authUserId" class="col-sm-6 offset-sm-8" style="color:blue;">{{chat.chat}} <br><small class="time" style="color:black;">({{chat.created_at}})</small></div>
                                     <div v-else style="max-width:200px;color:red;">{{chat.chat}} <br><small class="time" style="color:black;">({{chat.created_at}})</small></div>
                                     </div>
                                 </div>
@@ -55,11 +55,12 @@ export default {
           }
       },
       created(){
-          setInterval(this.getUsers,1000)
-          if (this.authUserId === 1) {
+        //   setInterval(this.getUsers,1000)
+          if (this.authUserId == 1) {
               this.isAdmin = true
               this.isUser = false
           }
+        this.getUsers()
           this.userSelected(1)
       },
       methods:{
@@ -77,7 +78,7 @@ export default {
               this.receiver_id = userId
               axios.get('all/chats/'+userId)
               .then(response =>{
-                  if(response.data === 'None'){
+                  if(response.data == 'None'){
                       this.chats = []
                   }else{
                       this.chats = response.data

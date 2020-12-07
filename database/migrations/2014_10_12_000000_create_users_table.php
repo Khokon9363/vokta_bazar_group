@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role')->default(0);
             $table->integer('status')->default(0);
-            $table->text('key_code')->default(rand(1,999999).'-vokta_bazar_group-'.time());
+            $table->text('key_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

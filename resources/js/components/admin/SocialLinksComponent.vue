@@ -72,7 +72,7 @@ export default {
                 skype : this.skype,
             })
                 .then(response =>{
-                    if (this.updateMode === false){
+                    if (this.updateMode == false){
                         alert('Links saved successfully')
                         this.getLinks()
                     }else {

@@ -123,7 +123,7 @@ export default {
 
             this.pageCount = 0
             this.pageCount = this.emailsPages.length
-            if (this.pageCount === 0) {
+            if (this.pageCount == 0) {
                 this.message = "Sorry! No email Found"
             }
         },

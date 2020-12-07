@@ -63,11 +63,13 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   
+        $keyCode = rand(1,999999).'_vokta-bazar-group_'.time();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'key_code' => $keyCode,
         ]);
     }
 }

@@ -1959,7 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('save_about', {
         about: this.about
       }).then(function (response) {
-        if (_this2.updateMode === false) {
+        if (_this2.updateMode == false) {
           alert('About saved successfully');
 
           _this2.getAbout();
@@ -2015,7 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "DashboardComponent",
   created: function created() {
     setInterval(this.time, 1000);
-    setInterval(this.date, 1000);
+    setInterval(this.date, 86400000);
   },
   methods: {
     time: function time() {
@@ -2188,7 +2188,7 @@ __webpack_require__.r(__webpack_exports__);
       this.pageCount = 0;
       this.pageCount = this.emailsPages.length;
 
-      if (this.pageCount === 0) {
+      if (this.pageCount == 0) {
         this.message = "Sorry! No email Found";
       }
     }
@@ -2262,13 +2262,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    setInterval(this.getUsers, 1000);
-
-    if (this.authUserId === 1) {
+    //   setInterval(this.getUsers,1000)
+    if (this.authUserId == 1) {
       this.isAdmin = true;
       this.isUser = false;
     }
 
+    this.getUsers();
     this.userSelected(1);
   },
   methods: {
@@ -2287,7 +2287,7 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedName = userName;
       this.receiver_id = userId;
       axios.get('all/chats/' + userId).then(function (response) {
-        if (response.data === 'None') {
+        if (response.data == 'None') {
           _this2.chats = [];
         } else {
           _this2.chats = response.data;
@@ -2627,7 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     if (document.getElementById('roleCheck')) {
-      if (document.getElementById('roleCheck').value === '1') {
+      if (document.getElementById('roleCheck').value == '1') {
         this.checkRole = 'Admin';
       }
     }
@@ -2720,7 +2720,7 @@ __webpack_require__.r(__webpack_exports__);
         whatsapp: this.whatsapp,
         skype: this.skype
       }).then(function (response) {
-        if (_this2.updateMode === false) {
+        if (_this2.updateMode == false) {
           alert('Links saved successfully');
 
           _this2.getLinks();
@@ -39841,216 +39841,235 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12 m-auto" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm.authUserId === 1
-            ? _c("div", { staticClass: "card-header" }, [
-                _vm._v("Live chat with - " + _vm._s(_vm.selectedName))
-              ])
-            : _c("div", { staticClass: "card-header" }, [
-                _vm._v("Live chat with - ভোক্তা বাজার গ্রুপ")
-              ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.authUserId === 1,
-                      expression: "authUserId === 1"
-                    }
-                  ],
-                  staticClass: "col-sm-4"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card card-borderless",
-                      staticStyle: { "max-height": "450px", overflow: "auto" }
-                    },
-                    [
-                      _c(
-                        "ul",
-                        _vm._l(_vm.users, function(user) {
-                          return _c(
-                            "li",
-                            {
-                              key: user.id,
-                              on: {
-                                mouseenter: function($event) {
-                                  return _vm.userSelected(user.id, user.name)
-                                },
-                                click: function($event) {
-                                  return _vm.userSelected(user.id, user.name)
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._s(user.name))]
-                          )
-                        }),
-                        0
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  class: {
-                    "col-sm-8": _vm.isAdmin,
-                    "col-sm-10 m-auto": _vm.isUser
-                  }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      staticStyle: {
-                        padding: "10px",
-                        "max-height": "450px",
-                        "overflow-x": "hidden"
+  return _c(
+    "div",
+    {
+      staticClass: "container",
+      on: {
+        click: function($event) {
+          return _vm.userSelected(1)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12 m-auto" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm.authUserId == 1
+              ? _c("div", { staticClass: "card-header" }, [
+                  _vm._v("Live chat with - " + _vm._s(_vm.selectedName))
+                ])
+              : _c("div", { staticClass: "card-header" }, [
+                  _vm._v("Live chat with - ভোক্তা বাজার গ্রুপ")
+                ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.authUserId == 1,
+                        expression: "authUserId == 1"
                       }
-                    },
-                    _vm._l(_vm.chats, function(chat) {
-                      return _c("div", { key: chat.id }, [
-                        chat.sender_id === _vm.authUserId
-                          ? _c(
-                              "div",
+                    ],
+                    staticClass: "col-sm-4"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card card-borderless",
+                        staticStyle: { "max-height": "450px", overflow: "auto" }
+                      },
+                      [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.users, function(user) {
+                            return _c(
+                              "li",
                               {
-                                staticClass: "col-sm-6 offset-sm-8",
-                                staticStyle: { color: "blue" }
-                              },
-                              [
-                                _vm._v(_vm._s(chat.chat) + " "),
-                                _c("br"),
-                                _c(
-                                  "small",
-                                  {
-                                    staticClass: "time",
-                                    staticStyle: { color: "black" }
+                                key: user.id,
+                                on: {
+                                  mousemove: function($event) {
+                                    return _vm.userSelected(user.id, user.name)
                                   },
-                                  [_vm._v("(" + _vm._s(chat.created_at) + ")")]
-                                )
-                              ]
-                            )
-                          : _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  "max-width": "200px",
-                                  color: "red"
+                                  click: function($event) {
+                                    return _vm.userSelected(user.id, user.name)
+                                  }
                                 }
                               },
-                              [
-                                _vm._v(_vm._s(chat.chat) + " "),
-                                _c("br"),
-                                _c(
-                                  "small",
-                                  {
-                                    staticClass: "time",
-                                    staticStyle: { color: "black" }
-                                  },
-                                  [_vm._v("(" + _vm._s(chat.created_at) + ")")]
-                                )
-                              ]
+                              [_vm._v(_vm._s(user.name))]
                             )
-                      ])
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-footer" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "form",
-                        {
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.send($event)
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    class: {
+                      "col-sm-8": _vm.isAdmin,
+                      "col-sm-10 m-auto": _vm.isUser
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card",
+                        staticStyle: {
+                          padding: "10px",
+                          "max-height": "450px",
+                          "overflow-x": "hidden"
+                        }
+                      },
+                      _vm._l(_vm.chats, function(chat) {
+                        return _c("div", { key: chat.id }, [
+                          chat.sender_id == _vm.authUserId
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "col-sm-6 offset-sm-8",
+                                  staticStyle: { color: "blue" }
+                                },
+                                [
+                                  _vm._v(_vm._s(chat.chat) + " "),
+                                  _c("br"),
+                                  _c(
+                                    "small",
+                                    {
+                                      staticClass: "time",
+                                      staticStyle: { color: "black" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "(" + _vm._s(chat.created_at) + ")"
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    "max-width": "200px",
+                                    color: "red"
+                                  }
+                                },
+                                [
+                                  _vm._v(_vm._s(chat.chat) + " "),
+                                  _c("br"),
+                                  _c(
+                                    "small",
+                                    {
+                                      staticClass: "time",
+                                      staticStyle: { color: "black" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "(" + _vm._s(chat.created_at) + ")"
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                        ])
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-footer" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "form",
+                          {
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.send($event)
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "row" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.chat,
-                                  expression: "chat"
-                                }
-                              ],
-                              staticClass: "chat",
-                              staticStyle: {
-                                width: "426px",
-                                "margin-right": "15px"
-                              },
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.chat },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                          },
+                          [
+                            _c("div", { staticClass: "row" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.chat,
+                                    expression: "chat"
                                   }
-                                  _vm.chat = $event.target.value
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.receiver_id,
-                                  expression: "receiver_id"
-                                }
-                              ],
-                              attrs: { type: "hidden" },
-                              domProps: { value: _vm.receiver_id },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                                ],
+                                staticClass: "chat",
+                                staticStyle: {
+                                  width: "426px",
+                                  "margin-right": "15px"
+                                },
+                                attrs: { type: "text" },
+                                domProps: { value: _vm.chat },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.chat = $event.target.value
                                   }
-                                  _vm.receiver_id = $event.target.value
                                 }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-success",
-                                attrs: { type: "submit" }
-                              },
-                              [_vm._v("Send")]
-                            )
-                          ])
-                        ]
-                      )
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.receiver_id,
+                                    expression: "receiver_id"
+                                  }
+                                ],
+                                attrs: { type: "hidden" },
+                                domProps: { value: _vm.receiver_id },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.receiver_id = $event.target.value
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Send")]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
                     ])
-                  ])
-                ]
-              )
+                  ]
+                )
+              ])
             ])
           ])
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40231,7 +40250,7 @@ var render = function() {
                           _c("td", [
                             _c("img", {
                               staticStyle: { height: "100px", width: "100px" },
-                              attrs: { src: "/storage/blogs/" + blog.image }
+                              attrs: { src: "/blogs/" + blog.image }
                             })
                           ]),
                           _vm._v(" "),
@@ -40251,12 +40270,12 @@ var render = function() {
                             [_vm._v("Click me !")]
                           ),
                           _vm._v(" "),
-                          blog.status === 0
+                          blog.status == 0
                             ? _c("td", [_vm._v("Deactive")])
                             : _c("td", [_vm._v("Active")]),
                           _vm._v(" "),
                           _c("td", [
-                            blog.status === 0
+                            blog.status == 0
                               ? _c(
                                   "button",
                                   {
@@ -40853,7 +40872,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(user.key_code))]),
                         _vm._v(" "),
-                        user.status === 1
+                        user.status == 1
                           ? _c("td", [
                               _c("span", { staticStyle: { color: "green" } }, [
                                 _vm._v("Active")
@@ -40866,7 +40885,7 @@ var render = function() {
                             ]),
                         _vm._v(" "),
                         _c("td", [
-                          user.status === 0
+                          user.status == 0
                             ? _c(
                                 "button",
                                 {
@@ -41285,10 +41304,7 @@ var render = function() {
                     [
                       _c("img", {
                         staticClass: "card-img-top",
-                        attrs: {
-                          src: "/storage/blogs/" + blog.image,
-                          alt: "..."
-                        }
+                        attrs: { src: "/blogs/" + blog.image, alt: "..." }
                       }),
                       _vm._v(" "),
                       _c("div", { staticClass: "card-body" }, [
@@ -58049,8 +58065,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\xampp\htdocs\voktabazar\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\xampp\htdocs\voktabazar\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\xampp\htdocs\vokta_bazar_group\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\xampp\htdocs\vokta_bazar_group\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

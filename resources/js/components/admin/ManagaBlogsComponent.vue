@@ -46,13 +46,13 @@
                                     <tr v-for="(blog,index) in blogs" :key="blog.id">
                                         <td>{{ ++index }}</td>
                                         <td>{{ blog.title }}</td>
-                                        <td><img :src="'/storage/blogs/'+blog.image" style="height: 100px;width: 100px;"></td>
+                                        <td><img :src="'/blogs/'+blog.image" style="height: 100px;width: 100px;"></td>
                                         <td style="width: 182px;">{{ blog.short_desc }}</td>
                                         <td @click="showLong(blog.long_desc)">Click me !</td>
-                                        <td v-if="blog.status === 0">Deactive</td>
+                                        <td v-if="blog.status == 0">Deactive</td>
                                         <td v-else>Active</td>
                                         <td>
-                                            <button v-if="blog.status === 0" @click="activeBlog(blog.id)" class="btn btn-success btn-sm">Active</button>
+                                            <button v-if="blog.status == 0" @click="activeBlog(blog.id)" class="btn btn-success btn-sm">Active</button>
                                             <button v-else @click="deactiveBlog(blog.id)" class="btn btn-info btn-sm text-white">Deactive</button>
                                             <button @click="deleteBlog(blog.id)" class="btn btn-danger btn-sm">Delete</button>
                                         </td>

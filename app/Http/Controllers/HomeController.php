@@ -16,7 +16,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        if(Auth::user()->status === 1){
+        if(Auth::user()->status == 1){
             return view('admin.admin');
         }else{
             return redirect('key_code');
@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function keyCode()
     {
-       if(Auth::user()->status === 1){
+       if(Auth::user()->status == 1){
            return redirect('home');
        }else{
            return view('admin.key_code');
@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function sendKeyCode(Request $request)
     {
         $user = User::find(Auth::user()->id);
-        if($user->key_code === $request->key_code){
+        if($user->key_code == $request->key_code){
             $user->status = 1;
             $user->save();
             return redirect('home');
@@ -72,7 +72,7 @@ class HomeController extends Controller
     }
     public function updateProfile(Request $request)
     {
-        if ($request->password === ''){
+        if ($request->password == ''){
             $profile = User::find(Auth::id());
             $profile->name = $request->name;
             $profile->email = $request->email;

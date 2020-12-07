@@ -30,7 +30,7 @@ export default {
     name: "DashboardComponent",
     created(){
       setInterval(this.time,1000)
-      setInterval(this.date,1000)
+      setInterval(this.date,86400000)
     },
     methods:{
         time(){
